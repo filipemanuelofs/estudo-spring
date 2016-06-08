@@ -1,5 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta content="UTF-8" />
 <title>Cadastro de títulos</title>
@@ -30,6 +32,9 @@
 					</div>
 					<div class="panel-body">
 						<form class="form-horizontal" role="form" action="/titulos" method="post">
+							<div class="alert alert-info" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+								<span th:text="${mensagem}"></span>
+							</div>
 							<div class="form-group">
 
 								<label for="inputDescricao" class="col-sm-2 control-label">
