@@ -1,3 +1,16 @@
+/.externalToolBuilders
+/.settings
+/target
+/.classpath
+/.project
+/src/main/resources/rebel.xml
+/pje.eml
+/pje.iml
+/.idea
+/out
+/overlays
+/bin/
+*.iml
 # Created by https://www.gitignore.io/api/java,eclipse,jboss,git
 
 ### Eclipse ###
