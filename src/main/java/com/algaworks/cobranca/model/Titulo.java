@@ -1,6 +1,7 @@
 package com.algaworks.cobranca.model;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
+import org.thymeleaf.util.DateUtils;
 
 import com.algaworks.cobranca.enums.StatusTituloEnum;
 
@@ -37,12 +39,23 @@ public class Titulo {
 	
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	@Column(name="dt_data_vencimento")
+	@Column(name="dt_vencimento")
 	private Date dataVencimento;
 	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	@Column(name="dt_criacao")
+	private Date dataCriacao;
+
 	@Enumerated(EnumType.STRING)
 	@Column(name="en_status_titulo")
 	private StatusTituloEnum statusTitulo;
+	
+	
+	
+	public Titulo() {
+		setDataCriacao(DateUtils.createNow().getTime());
+	}
 
 	public Long getIdTitulo() {
 		return idTitulo;
@@ -74,6 +87,14 @@ public class Titulo {
 
 	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
+	}
+
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
 	}
 
 	public StatusTituloEnum getStatusTitulo() {
