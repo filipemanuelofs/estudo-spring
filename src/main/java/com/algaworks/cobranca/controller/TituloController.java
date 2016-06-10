@@ -18,20 +18,21 @@ import com.algaworks.cobranca.repository.TituloRepository;
 @RequestMapping("/titulos")
 public class TituloController {
 	
-	private static final String PAGINA = "CadastroTitulo";
+	private static final String PAG_CADASTRO_TITULO = "CadastroTitulo";
+	private static final String PAG_PESQUISA_TITULO = "PesquisaTitulo";
 	
 	@Autowired
 	private TituloRepository tituloRepository;
 
 	@RequestMapping(value="/novo")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView(PAGINA);
+		ModelAndView mv = new ModelAndView(PAG_CADASTRO_TITULO);
 		return mv;
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView salvar(Titulo titulo) {
-		ModelAndView mv = new ModelAndView(PAGINA);
+		ModelAndView mv = new ModelAndView(PAG_CADASTRO_TITULO);
 		try {
 			tituloRepository.save(titulo);			
 			mv.addObject("mensagem", "Título cadastrado com sucesso.");
@@ -40,6 +41,11 @@ public class TituloController {
 			e.printStackTrace();
 		}
 		return mv;
+	}
+	
+	@RequestMapping
+	public String pesquisa() {
+		return PAG_PESQUISA_TITULO;
 	}
 	
 	@ModelAttribute(value="statusTituloList")

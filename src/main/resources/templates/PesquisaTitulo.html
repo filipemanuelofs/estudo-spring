@@ -4,7 +4,7 @@
 
 <head>
 	<meta content="UTF-8" />
-	<title>Cadastro de títulos</title>
+	<title>Pesquisa de títulos</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/css/cadastroTituloStyle.css" />
 </head>
@@ -19,64 +19,30 @@
 	</div>
 	</nav>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Novo título</h3>
-					</div>
-					<div class="panel-body">
-						<form class="form-horizontal" role="form" action="/titulos" method="post">
-							<div class="alert alert-info" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
-								<span th:text="${mensagem}"></span>
-							</div>
-							<div class="form-group">
-
-								<label for="inputDescricao" class="col-sm-2 control-label">
-									Descrição </label>
-								<div class="col-sm-4">
-									<input type="text" class="form-control" id="inputDescricao" name="descricao" />
-								</div>
-							</div>
-							<div class="form-group">
-
-								<label for="inputDtVencimento" class="col-sm-2 control-label">
-									Data de vencimento </label>
-								<div class="col-sm-2">
-									<input type="text" class="form-control" id="inputDtVencimento" name="dataVencimento" />
-								</div>
-							</div>
-							<div class="form-group">
-
-								<label for="inputValor" class="col-sm-2 control-label">
-									Valor </label>
-								<div class="col-sm-2">
-									<input type="text" class="form-control" id="inputValor" name="valor" />
-								</div>
-							</div>
-							<div class="form-group">
-
-								<label for="inputStatus" class="col-sm-2 control-label">
-									Status </label>
-								<div class="col-sm-2">
-									<select class="form-control" name="statusTitulo">
-										<option th:each="statusTitulo : ${statusTituloList}" th:value="${statusTitulo}" th:text="${statusTitulo.descricao}" />
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-primary">Salvar</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Pesquisar títulos</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th class="text-center col-md-1"></th>
+						<th class="text-center col-md-1">ID</th>
+						<th>Descrição</th>
+						<th class="text-center col-md-2">Data vencimento</th>
+						<th class="text-right col-md-2">Valor</th>
+						<th class="text-center col-md-2">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="6" class="text-center">Nenhum título encontrado.</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
-
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
 </body>
